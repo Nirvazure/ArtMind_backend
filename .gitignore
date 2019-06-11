@@ -1,0 +1,6 @@
+/data/
+/train/
+/test/
+/papers/
+
+*.pyc
