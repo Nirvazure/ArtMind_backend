@@ -6,7 +6,7 @@ import torch.nn as nn
 
 from net.ArtNet import ArtNet
 from net.inceptionV4 import InceptionV4
-from config import num_epochs, num_classes, batch_size, learning_rate, train_path, saved_model_path
+from config import num_epochs, num_classes, batch_size, learning_rate, train_path, saved_model_path, img_size
 
 # Device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -17,9 +17,9 @@ def show_batch(imgs):
     plt.imshow(grid.numpy().transpose((1, 2, 0)))
     plt.title('Batch from dataloader')
 
-
+#InceptionV4为229，Art为160
 trainset = torchvision.datasets.ImageFolder(train_path, transform=transforms.Compose(
-    [transforms.Scale(299), transforms.CenterCrop(299), transforms.ToTensor()]))
+    [transforms.Scale(img_size), transforms.CenterCrop(img_size), transforms.ToTensor()]))
 
 train_loader = torch.utils.data.DataLoader(
     trainset, batch_size=20, shuffle=True)
@@ -31,8 +31,8 @@ train_loader = torch.utils.data.DataLoader(
 #     plt.axis('off')
 #     plt.show()
 
-# model = ArtNet(num_classes).to(device)
-model = InceptionV4(num_classes).to(device)
+model = ArtNet(num_classes).to(device)
+# model = InceptionV4(num_classes).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
