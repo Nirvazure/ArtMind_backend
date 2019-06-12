@@ -11,7 +11,6 @@ from config import num_epochs, num_classes, batch_size, learning_rate, train_pat
 # Device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-
 def show_batch(imgs):
     grid = utils.make_grid(imgs, nrow=5)
     plt.imshow(grid.numpy().transpose((1, 2, 0)))

@@ -2,5 +2,6 @@
 /train/
 /test/
 /papers/
+/errors/
 
 *.pyc

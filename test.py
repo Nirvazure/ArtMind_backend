@@ -6,6 +6,8 @@ from torchvision import transforms, utils
 from config import num_classes, batch_size, learning_rate, test_path, saved_model_path, img_size
 import matplotlib.pyplot as plt
 
+import random
+
 # Device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 # model = InceptionV4(num_classes).to(device)
@@ -40,7 +42,11 @@ with torch.no_grad():
             grid = utils.make_grid(images[i], nrow=1)
             plt.imshow(grid.numpy().transpose((1, 2, 0)))
             plt.title('Batch from dataloader'+str(labels[i])+str(predicted[i]))
-            plt.show()
+            # plt.show()
+            if(labels[i] != predicted[i]):
+                plt.savefig('./errors/'+str(i) +
+                            str(random.randint(0, 200))+'.png')
+                print('error')
 
     print(correct, total)
     print('Test Accuracy of the model on the test images: {} %'.format(
