@@ -44,7 +44,7 @@ with torch.no_grad():
             plt.title('Batch from dataloader'+str(labels[i])+str(predicted[i]))
             # plt.show()
             if(labels[i] != predicted[i]):
-                plt.savefig('./errors/'+str(i) +
+                plt.savefig('./error1s/'+str(i) +
                             str(random.randint(0, 200))+'.png')
                 print('error')
 
