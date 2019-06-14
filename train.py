@@ -11,12 +11,14 @@ from config import num_epochs, num_classes, batch_size, learning_rate, train_pat
 # Device configuration
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
+
 def show_batch(imgs):
     grid = utils.make_grid(imgs, nrow=5)
     plt.imshow(grid.numpy().transpose((1, 2, 0)))
     plt.title('Batch from dataloader')
 
-#InceptionV4为229，Art为160
+
+# InceptionV4为229，Art为160
 trainset = torchvision.datasets.ImageFolder(train_path, transform=transforms.Compose(
     [transforms.Scale(img_size), transforms.CenterCrop(img_size), transforms.ToTensor()]))
 
@@ -24,11 +26,11 @@ train_loader = torch.utils.data.DataLoader(
     trainset, batch_size=20, shuffle=True)
 
 # 查看训练数据集样子的代码
-# for i, (batch_x, batch_y) in enumerate(train_loader):
-#     print(i, batch_x.size(), batch_y.size())
-#     show_batch(batch_x)
-#     plt.axis('off')
-#     plt.show()
+for i, (batch_x, batch_y) in enumerate(train_loader):
+    print(i, batch_x.size(), batch_y.size())
+    show_batch(batch_x)
+    plt.axis('off')
+    plt.show()
 
 model = ArtNet(num_classes).to(device)
 # model = InceptionV4(num_classes).to(device)
