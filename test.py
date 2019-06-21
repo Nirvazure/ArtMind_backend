@@ -15,7 +15,7 @@ model = ArtNet(num_classes).to(device)
 model.load_state_dict(torch.load(saved_model_path))
 
 testset = torchvision.datasets.ImageFolder(test_path, transform=transforms.Compose(
-    [transforms.Scale(img_size), transforms.CenterCrop(img_size), transforms.ToTensor()]))
+    [transforms.Scale(img_size), transforms.CenterCrop(img_size), trans forms.ToTensor()]))
 
 test_loader = torch.utils.data.DataLoader(testset, batch_size=20, shuffle=True)
 
