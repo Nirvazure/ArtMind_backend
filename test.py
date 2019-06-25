@@ -15,7 +15,7 @@ model = ArtNet(num_classes).to(device)
 model.load_state_dict(torch.load(saved_model_path))
 
 testset = torchvision.datasets.ImageFolder(test_path, transform=transforms.Compose(
-    [transforms.Scale(img_size), transforms.CenterCrop(img_size), trans forms.ToTensor()]))
+    [transforms.Scale(img_size), transforms.CenterCrop(img_size), transforms.ToTensor()]))
 
 test_loader = torch.utils.data.DataLoader(testset, batch_size=20, shuffle=True)
 
@@ -35,18 +35,18 @@ with torch.no_grad():
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
 
-        print(labels)
-        print(predicted)
+        # print(labels)
+        # print(predicted)
 
-        for i in range(len(images)):
-            grid = utils.make_grid(images[i], nrow=1)
-            plt.imshow(grid.numpy().transpose((1, 2, 0)))
-            plt.title('Batch from dataloader'+str(labels[i])+str(predicted[i]))
-            # plt.show()
-            if(labels[i] != predicted[i]):
-                plt.savefig('./error1s/'+str(i) +
-                            str(random.randint(0, 200))+'.png')
-                print('error')
+        # for i in range(len(images)):
+        #     grid = utils.make_grid(images[i], nrow=1)
+        #     plt.imshow(grid.numpy().transpose((1, 2, 0)))
+        #     plt.title('Batch from dataloader'+str(labels[i])+str(predicted[i]))
+        #     # plt.show()
+        #     if(labels[i] != predicted[i]):
+        #         plt.savefig('./errors/'+str(i) +
+        #                     str(random.randint(0, 200))+'.png')
+        #         print('error')
 
     print(correct, total)
     print('Test Accuracy of the model on the test images: {} %'.format(
