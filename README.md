@@ -1,5 +1,5 @@
 # ArtMind_Flask
-
+曲江归档
 基于机器学习的绘画分析（风格，流派，情感，画家）和推荐系统
 技术栈：Flask+Vue+Pytorch+Surprise
 
