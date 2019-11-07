@@ -1,7 +1,4 @@
-/data/
-/train/
-/test/
-/papers/
-/errors/
+/engine/train/
+/engine/test/
 
 *.pyc
