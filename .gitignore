@@ -1,4 +1,6 @@
 /engine/train/
 /engine/test/
+/flask/upload
+flask/KPL_Flask
 
 *.pyc
