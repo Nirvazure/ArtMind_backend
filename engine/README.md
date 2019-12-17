@@ -1,1 +1,10 @@
 这里是训练模块，训练集放在这里的train和test目录下
+
+更新了一下项目结构
+加入checkpoints文件夹 文件夹内放入bestmodels文件夹放入效果最好的参数
+加入dataset文件夹 包含 aug.py dataloader.py 两文件，主要实现数据增强和数据加载两个功能
+加入logs文件夹 日志文件
+将目前的model文件夹改为models，里面放入预训练的模型
+加入submit文件夹放入需要提交的csv文件
+加入util文件
+更新config文件 参数定义文件，以参数类的形式定义所需要提前设定或者修改的参数，例如：数据路径，学习率，训练 epoch 等；
