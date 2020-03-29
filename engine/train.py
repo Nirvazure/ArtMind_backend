@@ -26,11 +26,11 @@ train_loader = torch.utils.data.DataLoader(
     trainset, batch_size=20, shuffle=True)
 
 # 查看训练数据集样子的代码
-# for i, (batch_x, batch_y) in enumerate(train_loader):
-#     print(i, batch_x.size(), batch_y.size())
-#     show_batch(batch_x)
-#     plt.axis('off')
-#     plt.show()
+for i, (batch_x, batch_y) in enumerate(train_loader):
+    print(i, batch_x.size(), batch_y.size())
+    show_batch(batch_x)
+    plt.axis('off')
+    plt.show()
 
 model = ArtNet(num_classes).to(device)
 # model = InceptionV4(num_classes).to(device)
