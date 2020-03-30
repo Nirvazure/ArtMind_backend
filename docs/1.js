@@ -28,10 +28,14 @@ export let get_style = params => {
   return baseRequest("GET", "/style/all/", params, "");
 };
 
-
 //获取分析结果
 export let get_all_painter = params => {
-  return baseRequest("GET", "/analyse/"+params.img_id+params.model_id, params, "");
+  return baseRequest(
+    "GET",
+    "/analyse/" + params.img_id + params.model_id,
+    params,
+    ""
+  );
 };
 //根据id获取画家信息
 export let get_all_img = function get_all_img(params) {
