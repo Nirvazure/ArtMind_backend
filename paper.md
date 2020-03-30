@@ -90,3 +90,85 @@ AI 服务的状态机
 
 绘画有什么特征？
 笔触、颜色特征、画面主体
+
+在我这里的设定里面，Painter 应该都是 User
+
+# API
+
+## Moment 动态相关
+
+GET /moments
+获取所有瞬间
+
+GET /moments/id
+获取某条瞬间
+
+POST /moments
+发布某条瞬间
+data：{
+
+}
+发布一条瞬间
+
+## Painter 画家相关
+
+GET /painters
+获取画家
+params:{
+id/ 根据 id 筛选
+}
+
+PUT /painters/id
+修改画家信息
+data:{name=''leonard}
+
+DELETE /painters/id
+Accept：aplication/json
+删除画家
+
+## Craft 作品相关
+
+POST /crafts/
+场景：认证用户可以上传作品，需要权限
+
+GET /crafts
+场景：筛选各个数据维度的相关作品
+
+## Exhibition 展览相关
+
+## Analyse 分析相关
+
+GET /analyse/era
+传入参数：Image
+
+GET /analyse/style
+传入参数：Image
+
+GET /analyse/painter
+传入参数：Image
+
+const params = {
+image: image,
+u_id: user_id,
+m_id: model
+};
+function getCraftStyle() {
+return axios.get("/analyse/style", { params: params });
+}
+function getCraftEra() {
+return axios.get("/analyse/era", { params: params });
+}
+function getCraftPainter() {
+return axios.get("/analyse/painter", { params: params });
+}
+axios
+.all([getUserAccount(), getUserPermissions()])
+.then(axios.spread(function(acct, perms) {}));
+
+# 论文写作要点
+
+1. 应用场景具体清晰
+2. 主体人或者组织要行为明确
+3. 要考虑呈现方式（WEB）
+4. 涉及算法要加入指标性对比
+5. 研究方法不能太单一

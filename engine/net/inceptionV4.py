@@ -8,7 +8,6 @@ import torch.utils.model_zoo as model_zoo
 import os
 import sys
 
-
 __all__ = ['InceptionV4']
 
 
@@ -85,22 +84,18 @@ class Mixed_5a(nn.Module):
 
 
 class Inception_A(nn.Module):
-
     def __init__(self):
         super(Inception_A, self).__init__()
         self.branch0 = BasicConv2d(384, 96, kernel_size=1, stride=1)
-
         self.branch1 = nn.Sequential(
             BasicConv2d(384, 64, kernel_size=1, stride=1),
             BasicConv2d(64, 96, kernel_size=3, stride=1, padding=1)
         )
-
         self.branch2 = nn.Sequential(
             BasicConv2d(384, 64, kernel_size=1, stride=1),
             BasicConv2d(64, 96, kernel_size=3, stride=1, padding=1),
             BasicConv2d(96, 96, kernel_size=3, stride=1, padding=1)
         )
-
         self.branch3 = nn.Sequential(
             nn.AvgPool2d(3, stride=1, padding=1, count_include_pad=False),
             BasicConv2d(384, 96, kernel_size=1, stride=1)
@@ -254,7 +249,6 @@ class Inception_C(nn.Module):
 
 
 class InceptionV4Base(nn.Module):
-
     def __init__(self, num_classes=3):
         super(InceptionV4Base, self).__init__()
         # Special attributs
