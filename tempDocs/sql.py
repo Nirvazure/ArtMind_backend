@@ -1,4 +1,4 @@
-class Moment(db.Model):
+class CraftTask(db.Model):
     __tablename__ = 'moment'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     text = db.Column(db.String)

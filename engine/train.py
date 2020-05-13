@@ -28,9 +28,9 @@ train_loader = torch.utils.data.DataLoader(
 # 查看训练数据集样子的代码
 for i, (batch_x, batch_y) in enumerate(train_loader):
     print(i, batch_x.size(), batch_y.size())
-    show_batch(batch_x)
-    plt.axis('off')
-    plt.show()
+    # show_batch(batch_x)
+    # plt.axis('off')
+    # plt.show()
 
 model = ArtNet(num_classes).to(device)
 # model = InceptionV4(num_classes).to(device)
@@ -55,7 +55,7 @@ for epoch in range(num_epochs):
         optimizer.step()
 
         # 之前是100，我改成10步一看
-        if (i+1) % 10 == 0:
+        if (i+1) % 100 == 0:
             print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'
                   .format(epoch+1, num_epochs, i+1, total_step, loss.item()))
 

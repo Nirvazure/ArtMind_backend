@@ -12,15 +12,14 @@ def allow_file(filename):
 
 # strict_slashes=None,对URL最后的 / 符号是否严格要求，
 @app.route('/up_photo',methods=['POST'],strict_slashes=False)
-def api_upload():
-    
+def craftupload():
     if not os.path.exists(file_dir):
         os.makedirs(file_dir)
     f=request.files['photo']
     if f and allow_file(f.filename):
         fname=secure_filename(f.filename)
-        ext=fname.rsplit('.',1)[1]  #可能是后缀，也可能不是
-        new_filename = 's222' + '.' + ext   #这里我想的是用ID的自增一
+        ext=fname.rsplit('.',1)[1]  
+        new_filename = 's222' + '.' + ext  
         print(fname,ext,new_filename)
         f.save(os.path.join(file_dir,fname))
         return jsonify({"success":0,"msg":"上传成功"})

@@ -1,5 +1,6 @@
 import torch.nn as nn
 
+
 class ArtNet(nn.Module):
     def __init__(self, num_classes=3):
         super(ArtNet, self).__init__()
